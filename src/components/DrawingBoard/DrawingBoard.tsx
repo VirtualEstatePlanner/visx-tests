@@ -40,8 +40,8 @@ export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
   return board.width < 10 ? null : (
     <div className='DrawingBoard' style={{ touchAction: 'none' }}>
       <svg width={board.width} height={board.height}>
-        <LinearGradient id='stroke' from='#FFFFFF' to='#444444' />
-        <rect fill='#04002b' width={board.width} height={board.height} rx={14} />
+        <LinearGradient id='stroke' from='#000000' to='#BBBBBB' />
+        <rect fill='#FFFFFF' width={board.width} height={board.height} rx={14} />
         {lines.map((line, i) => (
           <LinePath key={`line-${i}`} fill='transparent' stroke='url(#stroke)' strokeWidth={3} data={line} curve={curveBasis} x={(d) => d.x} y={(d) => d.y} />
         ))}
