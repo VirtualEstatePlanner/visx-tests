@@ -1,16 +1,15 @@
 import React from 'react'
 import { AsapTheme } from './components/AppTheme'
 import { ThemeProvider } from '@material-ui/core'
-import { SimpleBarGraph } from './components/SimpleBarGraph'
+//import { ReactiveContainer } from './components/ReactiveContainer/ReactiveContainer'
+//<ReactiveContainer />
 
 export const App: React.FC = () => {
   return (
     <div className='App'>
       <ThemeProvider theme={AsapTheme}>
         <header className='App-header'></header>
-        <body>
-          <SimpleBarGraph />
-        </body>
+        <body></body>
       </ThemeProvider>
     </div>
   )
