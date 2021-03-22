@@ -1,0 +1,14 @@
+appId: com.YOUR_GITHUB_USER.YOUR_PRODUCT_NAME
+artifactName: ${productName}-${version}-linux-arm64.${ext}
+asar: true
+directories:
+  output: ./dist
+files:
+  - 'build/**/*'
+  - 'node_modules/node-notifier/vendor/snoreToast/SnoreToast.exe'
+compression: maximum
+linux:
+  category: Development
+  target:
+    - { target: 'AppImage', arch: 'arm64' }
+  icon: './src/images/icons/icon.icns'
