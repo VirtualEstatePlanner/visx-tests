@@ -1,15 +1,13 @@
 import React from 'react'
 import { AsapTheme } from './components/AppTheme'
 import { ThemeProvider } from '@material-ui/core'
-//import { ReactiveContainer } from './components/ReactiveContainer/ReactiveContainer'
-//<ReactiveContainer />
+import { DrawingBoard } from './components/DrawingBoard/DrawingBoard'
 
 export const App: React.FC = () => {
   return (
     <div className='App'>
       <ThemeProvider theme={AsapTheme}>
-        <header className='App-header'></header>
-        <body></body>
+        <DrawingBoard data={[]} width={720} height={480} />
       </ThemeProvider>
     </div>
   )
