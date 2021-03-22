@@ -71,6 +71,7 @@
     "@material-ui/core": "next",
     "@material-ui/icons": "next",
     "@material-ui/styles": "next",
+    "@visx/visx": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest"
@@ -78,6 +79,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
+    "@types/d3-array": "latest",
     "@types/electron-devtools-installer": "latest",
     "@types/file-saver": "latest",
     "@types/jest": "latest",
@@ -87,7 +89,6 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@visx/react-spring": "latest",
-    "@visx/visx": "latest",
     "cross-env": "latest",
     "d3": "latest",
     "d3-array": "latest",
