@@ -205,7 +205,7 @@ export const AsapTheme: Theme = createMuiTheme({
 
 export const MontserratTheme: Theme = createMuiTheme({
   typography: {
-    fontFamily: 'Asap',
+    fontFamily: 'Montserrat',
   },
   palette: {
     background: PaletteBackgroundStyle,
