@@ -66,6 +66,8 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@fontsource/asap": "latest",
+    "@fontsource/montserrat": "latest",
     "@material-ui/core": "next",
     "@material-ui/icons": "next",
     "@material-ui/styles": "next",
