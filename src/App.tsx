@@ -7,7 +7,10 @@ export const App: React.FC = () => {
   return (
     <div className='App'>
       <ThemeProvider theme={AsapTheme}>
-        <DrawingBoard data={[]} width={720} height={480} />
+        <p>
+          DrawingBoard component
+          <DrawingBoard data={[]} width={720} height={480} />
+        </p>
       </ThemeProvider>
     </div>
   )
