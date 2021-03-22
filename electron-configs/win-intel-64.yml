@@ -1,4 +1,4 @@
-appId: com.YOUR_GITHUB_USER.YOUR_PRODUCT_NAME
+appId: com.VirtualEstatePlanner.visx-tests
 artifactName: ${productName}-${version}-win-x64.${ext}
 asar: true
 directories:

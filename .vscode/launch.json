@@ -7,10 +7,7 @@
       "name": "Electron Main Process",
       "outFiles": ["${workspaceRoot}/dist/**/*"],
       "runtimeExecutable": "${workspaceFolder}/main/node_modules/.bin/electron",
-      "runtimeArgs": [
-        "--remote-debugging-port=9223",
-        "${workspaceRoot}/dist/build/index.html"
-      ],
+      "runtimeArgs": ["--remote-debugging-port=9223", "${workspaceRoot}/dist/build/index.html"],
       "windows": {
         "runtimeExecutable": "${workspaceFolder}/main/node_modules/.bin/electron.cmd"
       },

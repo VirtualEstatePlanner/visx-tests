@@ -1,4 +1,4 @@
-appId: com.YOUR_GITHUB_USER.YOUR_PRODUCT_NAME
+appId: com.VirtualEstatePlanner.visx-tests
 artifactName: ${productName}-${version}-mac-amd64.${ext}
 asar: true
 directories:
@@ -8,7 +8,7 @@ files:
   - 'node_modules/node-notifier/vendor/snoreToast/SnoreToast.exe'
 compression: maximum
 dmg:
-  title: YOUR_PRODUCT_NAME
+  title: visx-tests
   icon: './src/images/icons/icon.icns'
   iconSize: 128
   contents:

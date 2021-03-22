@@ -1,17 +1,17 @@
-import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron';
-import { join, resolve } from 'path';
-import { format } from 'url';
+import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron'
+import { join, resolve } from 'path'
+import { format } from 'url'
 
-export let mainWindow: BrowserWindow | null;
+export let mainWindow: BrowserWindow | null
 
 function createWindow() {
-  const indexpath: string = join(__dirname, `/index.html`);
-  console.log(`indexpath results:`);
-  console.log(indexpath);
+  const indexpath: string = join(__dirname, `/index.html`)
+  console.log(`indexpath results:`)
+  console.log(indexpath)
 
-  const electronurl: string = resolve(indexpath);
-  console.log(`electronurl results:`);
-  console.log(electronurl);
+  const electronurl: string = resolve(indexpath)
+  console.log(`electronurl results:`)
+  console.log(electronurl)
 
   mainWindow = new BrowserWindow({
     width: 1100,
@@ -19,42 +19,42 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       allowRunningInsecureContent: false,
-      preload: __dirname + '/preload.js'
-    }
-  });
+      preload: __dirname + '/preload.js',
+    },
+  })
 
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL(`http://localhost:3000`);
+    mainWindow.loadURL(`http://localhost:3000`)
   } else {
     //      mainWindow.loadFile(`file://${indexpath})`
     mainWindow.loadURL(
       format({
         pathname: indexpath,
         protocol: 'file:',
-        slashes: true
+        slashes: true,
       })
-    );
+    )
   }
 
   mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
+    mainWindow = null
+  })
 }
 
-app.on('ready', createWindow);
+app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit();
+    app.quit()
   }
-});
+})
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow();
+    createWindow()
   }
-});
+})
 
 ipcMain.on('onButtonClick', () => {
-  console.log('Main on button click');
-});
+  console.log('Main on button click')
+})
