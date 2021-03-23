@@ -7,6 +7,7 @@ import { ThresholdDifference } from './components/ThresholdDifference/ThresholdD
 import { VerticalBarGroup } from './components/VerticalBarGroup/VerticalBarGroup'
 import { IDimensions } from './interfaces/IDimensions'
 import { HorizontalBarGroup } from './components/HorizontalBarGroup/HorizontalBarGroup'
+import { ResponsiveContainer } from './components/ResponsiveContainer/ResponsiveContainer'
 
 const dimensions: IDimensions = { width: 720, height: 480 }
 

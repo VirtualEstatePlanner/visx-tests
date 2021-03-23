@@ -42,7 +42,7 @@ export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
     <div className={`DrawingBoard`} style={{ touchAction: `none` }}>
       <svg width={board.dimensions.width} height={board.dimensions.height}>
         <LinearGradient id={`stroke`} from={`#000000`} to={`#BBBBBB`} />
-        <rect fill='#F8F8F8' width={board.dimensions.width} height={board.dimensions.height} rx={14} />
+        <rect fill={`#F8F8F8`} width={board.dimensions.width} height={board.dimensions.height} rx={14} />
         {lines.map((line: ILine[], i: number) => (
           <LinePath key={`line-${i}`} fill={`transparent`} stroke={`url(#stroke)`} strokeWidth={3} data={line} curve={curveBasis} x={(d) => d.x} y={(d) => d.y} />
         ))}
