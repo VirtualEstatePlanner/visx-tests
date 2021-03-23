@@ -7,23 +7,24 @@ import { IDrawingBoardProps } from '../../interfaces/IDrawingBoardProps'
 import { ILine } from '../../interfaces/ILine'
 
 export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
-  const [lines, setLines]: [ILine[][], React.Dispatch<React.SetStateAction<ILine[][]>>] = React.useState<ILine[][]>(board.data || [])
+  // instantiate a react state for this component
+  const [lines, setLines]: [ILine[][], React.Dispatch<React.SetStateAction<ILine[][]>>] = React.useState<ILine[][]>(board.data)
 
   const onDragStart = React.useCallback(
-    (currDrag) => {
+    (currentDrag) => {
       // add the new line with the starting point
-      setLines((currLines) => [...currLines, [{ x: currDrag.x, y: currDrag.y }]])
+      setLines((currentLines) => [...currentLines, [{ x: currentDrag.x, y: currentDrag.y }]])
     },
     [setLines]
   )
 
   const onDragMove = React.useCallback(
-    (currDrag) => {
+    (currentDrag): void => {
       // add the new point to the current line
-      setLines((currLines) => {
-        const nextLines = [...currLines]
-        const newPoint = { x: currDrag.x + currDrag.dx, y: currDrag.y + currDrag.dy }
-        const lastIndex = nextLines.length - 1
+      setLines((currentLines): ILine[][] => {
+        const nextLines: ILine[][] = [...currentLines]
+        const newPoint: ILine = { x: currentDrag.x + currentDrag.dx, y: currentDrag.y + currentDrag.dy }
+        const lastIndex: number = nextLines.length - 1
         nextLines[lastIndex] = [...(nextLines[lastIndex] || []), newPoint]
         return nextLines
       })
@@ -38,29 +39,29 @@ export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
   })
 
   return board.width < 10 ? null : (
-    <div className='DrawingBoard' style={{ touchAction: 'none' }}>
+    <div className={`DrawingBoard`} style={{ touchAction: `none` }}>
       <svg width={board.width} height={board.height}>
-        <LinearGradient id='stroke' from='#000000' to='#BBBBBB' />
+        <LinearGradient id={`stroke`} from={`#000000`} to={`#BBBBBB`} />
         <rect fill='#FFFFFF' width={board.width} height={board.height} rx={14} />
-        {lines.map((line, i) => (
-          <LinePath key={`line-${i}`} fill='transparent' stroke='url(#stroke)' strokeWidth={3} data={line} curve={curveBasis} x={(d) => d.x} y={(d) => d.y} />
+        {lines.map((line: ILine[], i: number) => (
+          <LinePath key={`line-${i}`} fill={`transparent`} stroke={`url(#stroke)`} strokeWidth={3} data={line} curve={curveBasis} x={(d) => d.x} y={(d) => d.y} />
         ))}
 
         <g>
           {isDragging && (
             /* capture mouse events (note: <Drag /> does this for you) */
-            <rect width={board.width} height={board.height} onMouseMove={dragMove} onMouseUp={dragEnd} fill='transparent' />
+            <rect width={board.width} height={board.height} onMouseMove={dragMove} onMouseUp={dragEnd} fill={`transparent`} />
           )}
           {/* decorate the currently drawing line */}
           {isDragging && (
             <g>
-              <rect fill='white' width={8} height={8} x={x + dx - 4} y={y + dy - 4} pointerEvents='none' />
-              <circle cx={x} cy={y} r={4} fill='transparent' stroke='white' pointerEvents='none' />
+              <rect fill={`white`} width={8} height={8} x={x + dx - 4} y={y + dy - 4} pointerEvents={`none`} />
+              <circle cx={x} cy={y} r={4} fill={`transparent`} stroke={`white`} pointerEvents={`none`} />
             </g>
           )}
           {/* create the drawing area */}
           <rect
-            fill='transparent'
+            fill={`transparent`}
             width={board.width}
             height={board.height}
             onMouseDown={dragStart}
