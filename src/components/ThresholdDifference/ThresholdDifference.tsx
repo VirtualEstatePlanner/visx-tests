@@ -2,7 +2,7 @@ import { Group, curveBasis, LinePath, scaleTime, scaleLinear, AxisLeft, AxisBott
 import cityTemperature, { CityTemperature } from '@visx/mock-data/lib/mocks/cityTemperature'
 import { IThresholdDifferenceProps } from '../../interfaces/IThresholdDifferenceProps'
 import { Threshold } from '@visx/threshold'
-import { IMargins } from '../../interfaces/IMargins'
+import { defaultMargins } from '../../props/defaultMargins'
 
 export const background = `#F3F3F3`
 const strokeColor: string = `#E0E0E0`
@@ -21,9 +21,7 @@ const temperatureScale = scaleLinear<number>({
   nice: true,
 })
 
-const defaultMargin: IMargins = { top: 40, right: 30, bottom: 50, left: 40 }
-
-export const ThresholdDifference: Function = ({ width, height, margin = defaultMargin }: IThresholdDifferenceProps): React.ReactElement | null => {
+export const ThresholdDifference: Function = ({ width, height, margin = defaultMargins }: IThresholdDifferenceProps): React.ReactElement | null => {
   if (width < 10) return null
 
   // bounds
