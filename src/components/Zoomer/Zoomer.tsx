@@ -8,8 +8,8 @@ import genPhyllotaxis, { GenPhyllotaxis, GenPhyllotaxisFunction, PhyllotaxisPoin
 import { scaleLinear } from '@visx/scale'
 import { IZoomProps } from '../../interfaces/IZoomProps'
 
-const bg = '#0a0a0a'
-const points = [...new Array(1000)]
+const bg: string = '#0a0a0a'
+const points: number[] = [...new Array(1000)]
 
 const colorScale = scaleLinear<number>({ range: [0, 1], domain: [0, 1000] })
 const sizeScale = scaleLinear<number>({ domain: [0, 600], range: [0.5, 8] })
