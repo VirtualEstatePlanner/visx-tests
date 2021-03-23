@@ -4,8 +4,9 @@ import { ThemeProvider } from '@material-ui/core'
 import { DrawingBoard } from './components/DrawingBoard/DrawingBoard'
 import { Zoomer } from './components/Zoomer/Zoomer'
 import { ThresholdDifference } from './components/ThresholdDifference/ThresholdDifference'
-import { SomeBarGroup } from './components/SomeBarGroup/SomeBarGroup'
+import { VerticalBarGroup } from './components/VerticalBarGroup/VerticalBarGroup'
 import { IDimensions } from './interfaces/IDimensions'
+import { HorizontalBarGroup } from './components/HorizontalBarGroup/HorizontalBarGroup'
 
 const dimensions: IDimensions = { width: 720, height: 480 }
 
@@ -27,9 +28,14 @@ export const App: React.FC = () => {
         <p>
           <ThresholdDifference dimensions={dimensions} />
         </p>
-        <p>Bar Group component</p>
+        <p>Vertical Bar Group component</p>
         <p>
-          <SomeBarGroup dimensions={dimensions} />
+          <VerticalBarGroup dimensions={dimensions} />
+        </p>
+        <p></p>
+        <p>Horizontal Bar Group component</p>
+        <p>
+          <HorizontalBarGroup dimensions={dimensions} />
         </p>
         <p></p>
       </ThemeProvider>

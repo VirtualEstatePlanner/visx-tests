@@ -42,7 +42,7 @@ const colorScale = scaleOrdinal<string, string>({
   range: [firstBar, secondBar, thirdBar],
 })
 
-export const SomeBarGroup: Function = ({ dimensions, events = false, margin = defaultMargins }: IBarGroupProps): React.ReactElement | null => {
+export const VerticalBarGroup: Function = ({ dimensions, events = false, margin = defaultMargins }: IBarGroupProps): React.ReactElement | null => {
   // bounds
   const xMax = dimensions.width - margin.left - margin.right
   const yMax = dimensions.height - margin.top - margin.bottom
