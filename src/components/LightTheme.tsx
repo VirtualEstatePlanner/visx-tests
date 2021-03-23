@@ -37,7 +37,7 @@ import InputOutlinedRootStyle from '../styles/InputOutlinedRootStyle'
 import FormControlLabelRootStyle from '../styles/FormControlLabelRootStyle'
 import SliderRootStyle from '../styles/SliderRootStyle'
 
-export const AsapTheme: Theme = createMuiTheme({
+export const LightTheme: Theme = createMuiTheme({
   typography: {
     fontFamily: 'Asap',
   },
