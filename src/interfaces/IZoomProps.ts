@@ -1,4 +1,5 @@
+import { IDimensions } from './IDimensions'
+
 export interface IZoomProps {
-  width: number
-  height: number
+  dimensions: IDimensions
 }

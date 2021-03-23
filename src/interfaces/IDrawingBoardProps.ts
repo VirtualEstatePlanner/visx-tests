@@ -1,7 +1,7 @@
+import { IDimensions } from './IDimensions'
 import { ILine } from './ILine'
 
 export interface IDrawingBoardProps {
-  width: number
-  height: number
+  dimensions: IDimensions
   data: ILine[][]
 }

@@ -38,11 +38,11 @@ export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
     resetOnStart: true,
   })
 
-  return board.width < 10 ? null : (
+  return board.dimensions.width < 10 ? null : (
     <div className={`DrawingBoard`} style={{ touchAction: `none` }}>
-      <svg width={board.width} height={board.height}>
+      <svg width={board.dimensions.width} height={board.dimensions.height}>
         <LinearGradient id={`stroke`} from={`#000000`} to={`#BBBBBB`} />
-        <rect fill='#F8F8F8' width={board.width} height={board.height} rx={14} />
+        <rect fill='#F8F8F8' width={board.dimensions.width} height={board.dimensions.height} rx={14} />
         {lines.map((line: ILine[], i: number) => (
           <LinePath key={`line-${i}`} fill={`transparent`} stroke={`url(#stroke)`} strokeWidth={3} data={line} curve={curveBasis} x={(d) => d.x} y={(d) => d.y} />
         ))}
@@ -50,7 +50,7 @@ export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
         <g>
           {isDragging && (
             /* capture mouse events (note: <Drag /> does this for you) */
-            <rect width={board.width} height={board.height} onMouseMove={dragMove} onMouseUp={dragEnd} fill={`transparent`} />
+            <rect width={board.dimensions.width} height={board.dimensions.height} onMouseMove={dragMove} onMouseUp={dragEnd} fill={`transparent`} />
           )}
           {/* decorate the currently drawing line */}
           {isDragging && (
@@ -62,8 +62,8 @@ export const DrawingBoard: Function = (board: IDrawingBoardProps) => {
           {/* create the drawing area */}
           <rect
             fill={`transparent`}
-            width={board.width}
-            height={board.height}
+            width={board.dimensions.width}
+            height={board.dimensions.height}
             onMouseDown={dragStart}
             onMouseUp={isDragging ? dragEnd : undefined}
             onMouseMove={isDragging ? dragMove : undefined}

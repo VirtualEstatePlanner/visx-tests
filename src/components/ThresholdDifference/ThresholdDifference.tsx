@@ -21,25 +21,25 @@ const temperatureScale = scaleLinear<number>({
   nice: true,
 })
 
-export const ThresholdDifference: Function = ({ width, height, margin = defaultMargins }: IThresholdDifferenceProps): React.ReactElement | null => {
-  if (width < 10) return null
+export const ThresholdDifference: Function = ({ dimensions, margin = defaultMargins }: IThresholdDifferenceProps): React.ReactElement | null => {
+  if (dimensions.width < 10) return null
 
   // bounds
-  const xMax = width - margin.left - margin.right
-  const yMax = height - margin.top - margin.bottom
+  const xMax = dimensions.width - margin.left - margin.right
+  const yMax = dimensions.height - margin.top - margin.bottom
 
   timeScale.range([0, xMax])
   temperatureScale.range([yMax, 0])
 
   return (
     <div>
-      <svg width={width} height={height}>
-        <rect x={0} y={0} width={width} height={height} fill={background} rx={14} />
+      <svg width={dimensions.width} height={dimensions.height}>
+        <rect x={0} y={0} width={dimensions.width} height={dimensions.height} fill={background} rx={14} />
         <Group left={margin.left} top={margin.top}>
           <GridRows scale={temperatureScale} width={xMax} height={yMax} stroke={strokeColor} />
           <GridColumns scale={timeScale} width={xMax} height={yMax} stroke={strokeColor} />
           <line x1={xMax} x2={xMax} y1={0} y2={yMax} stroke={strokeColor} />
-          <AxisBottom top={yMax} scale={timeScale} numTicks={width > 520 ? 10 : 5} />
+          <AxisBottom top={yMax} scale={timeScale} numTicks={dimensions.width > 520 ? 10 : 5} />
           <AxisLeft scale={temperatureScale} />
           <text x={`-70`} y={`15`} transform={`rotate(-90)`} fontSize={10}>
             Temperature (°F)

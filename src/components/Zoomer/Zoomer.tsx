@@ -23,9 +23,9 @@ const initialTransform = {
   skewY: 0,
 }
 
-export const Zoomer: Function = ({ width, height }: IZoomProps) => {
+export const Zoomer: Function = ({ dimensions }: IZoomProps) => {
   const [showMiniMap, setShowMiniMap] = React.useState<boolean>(true)
-  const dotGrid: GenPhyllotaxis = { radius: 8, width, height }
+  const dotGrid: GenPhyllotaxis = { radius: 8, ...dimensions }
 
   const generator: GenPhyllotaxisFunction = genPhyllotaxis(dotGrid)
   const phyllotaxis: PhyllotaxisPoint[] = points.map((d: number, i: number) => generator(i))
@@ -78,12 +78,12 @@ export const Zoomer: Function = ({ width, height }: IZoomProps) => {
           position: relative;
         }
       `}</style>
-      <Zoom width={width} height={height} scaleXMin={1 / 10} scaleXMax={10} scaleYMin={1 / 10} scaleYMax={10} transformMatrix={initialTransform}>
+      <Zoom width={dimensions.width} height={dimensions.height} scaleXMin={1 / 10} scaleXMax={10} scaleYMin={1 / 10} scaleYMax={10} transformMatrix={initialTransform}>
         {(zoom) => (
           <div className={`relative`}>
-            <svg width={width} height={height} style={{ cursor: zoom.isDragging ? `grabbing` : `grab` }}>
-              <RectClipPath id={`zoom-clip`} width={width} height={height} />
-              <rect width={width} height={height} rx={14} fill={bg} />
+            <svg width={dimensions.width} height={dimensions.height} style={{ cursor: zoom.isDragging ? `grabbing` : `grab` }}>
+              <RectClipPath id={`zoom-clip`} width={dimensions.width} height={dimensions.height} />
+              <rect width={dimensions.width} height={dimensions.height} rx={14} fill={bg} />
               <g transform={zoom.toString()}>
                 {phyllotaxis.map(({ x, y }, i) => (
                   <React.Fragment key={`dot-${i}`}>
@@ -92,8 +92,8 @@ export const Zoomer: Function = ({ width, height }: IZoomProps) => {
                 ))}
               </g>
               <rect
-                width={width}
-                height={height}
+                width={dimensions.width}
+                height={dimensions.height}
                 rx={14}
                 fill={`transparent`}
                 onTouchStart={zoom.dragStart}
@@ -115,15 +115,15 @@ export const Zoomer: Function = ({ width, height }: IZoomProps) => {
                   clipPath={`url(#zoom-clip)`}
                   transform={`
                     scale(0.25)
-                    translate(${width * 4 - width - 60}, ${height * 4 - height - 60})
+                    translate(${dimensions.width * 4 - dimensions.width - 60}, ${dimensions.height * 4 - dimensions.height - 60})
                   `}>
-                  <rect width={width} height={height} fill={bg} />
+                  <rect width={dimensions.width} height={dimensions.height} fill={bg} />
                   {phyllotaxis.map(({ x, y }, i) => (
                     <React.Fragment key={`dot-sm-${i}`}>
                       <circle cx={x} cy={y} r={i > 500 ? sizeScale(1000 - i) : sizeScale(i)} fill={interpolateRainbow(colorScale(i) ?? 0)} />
                     </React.Fragment>
                   ))}
-                  <rect width={width} height={height} fill='white' fillOpacity={0.2} stroke='white' strokeWidth={4} transform={zoom.toStringInvert()} />
+                  <rect width={dimensions.width} height={dimensions.height} fill='white' fillOpacity={0.2} stroke='white' strokeWidth={4} transform={zoom.toStringInvert()} />
                 </g>
               )}
             </svg>
