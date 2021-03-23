@@ -71,6 +71,7 @@
     "@material-ui/core": "next",
     "@material-ui/icons": "next",
     "@material-ui/styles": "next",
+    "@visx/threshold": "latest",
     "@visx/visx": "latest",
     "d3": "latest",
     "react": "latest",

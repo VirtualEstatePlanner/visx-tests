@@ -3,6 +3,7 @@ import { AsapTheme } from './components/AppTheme'
 import { ThemeProvider } from '@material-ui/core'
 import { DrawingBoard } from './components/DrawingBoard/DrawingBoard'
 import { Zoomer } from './components/Zoomer/Zoomer'
+import { ThresholdDifference } from './components/ThresholdDifference/ThresholdDifference'
 
 const dimensions: number[] = [720, 480]
 
@@ -17,6 +18,10 @@ export const App: React.FC = () => {
         <p>
           Zoomer component
           <Zoomer width={dimensions[0]} height={dimensions[1]} />
+        </p>
+        <p>
+          Threshold Difference component
+          <ThresholdDifference width={dimensions[0]} height={dimensions[1]} />
         </p>
       </ThemeProvider>
     </div>
